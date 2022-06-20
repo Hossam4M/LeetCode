@@ -9,8 +9,10 @@ var isIsomorphic = function(s, t) {
     
     for (const i in s) {
         if (!mapStoT[s[i]]) {
+            if (mapTtoS[t[i]] && mapTtoS[t[i]] !== s[i]) return false
             mapStoT[s[i]] = t[i];
             if (!mapTtoS[t[i]]) { mapTtoS[t[i]] = s[i]}
+            continue;
         };
         
         if (mapStoT[s[i]] === t[i] && mapTtoS[t[i]] === s[i]) continue;
