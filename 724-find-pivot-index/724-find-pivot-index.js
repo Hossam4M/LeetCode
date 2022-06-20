@@ -3,17 +3,13 @@
  * @return {number}
  */
 
-function sumArray(list) {
-    let sum = 0
-    for (const num of list) {
-        sum += num
-    }
-    return sum
-}
-
 var pivotIndex = function(nums) {
     
-    let total = sumArray(nums);
+    let total = 0
+    
+    for (const num of nums) {
+        total += num
+    }
     
     let compare = 0
     
