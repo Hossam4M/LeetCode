@@ -13,11 +13,19 @@ function sumArray(list) {
 
 var pivotIndex = function(nums) {
     
+    let total = sumArray(nums);
+    
+    let compare = 0
+    
     for (let i = 0; i < nums.length; i++) {
         
-        if (
-            sumArray(nums.slice(0, i)) === sumArray(nums.slice(i + 1))
-        ) return i
+        total -= nums[i]
+        
+        if (total === 0 && i === 0 ) return i;
+        
+        if (total === compare) return i;
+        
+        compare += nums[i]
     }
     
     return -1
