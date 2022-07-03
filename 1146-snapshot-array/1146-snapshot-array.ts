@@ -14,7 +14,7 @@ class SnapshotArray {
     }
 
     snap() {
-        this.archive.push([...this.current]);
+        this.archive.push(this.current.slice());
         return this.id++;
     }
 
