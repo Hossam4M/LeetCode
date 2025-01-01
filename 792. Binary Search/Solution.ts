@@ -1,13 +1,19 @@
 function search(nums: number[], target: number, acc: number = 0): number {
-    if (!nums.length) return -1;
+    let startIndex = 0;
 
-    const middleIndex = Math.floor(nums.length / 2)
+    let endIndex = nums.length -1;
 
-    // if (!middleIndex && nums[middleIndex] != target) return -1;
- 
-    if (nums[middleIndex] == target) return acc + middleIndex
+    while (startIndex < endIndex) {
+        const middle = Math.floor((endIndex - startIndex) / 2) + startIndex
 
-    if (nums[middleIndex] < target) return search(nums.slice(middleIndex + 1), target, acc + 1 + middleIndex)
+        if (nums[middle] == target) return middle
 
-    return search(nums.slice(0, middleIndex), target, acc)
+        if (nums[middle] < target) {
+            startIndex = middle + 1
+        } else {
+            endIndex = middle - 1
+        }
+    }
+
+    return nums[startIndex] == target ? startIndex : -1
 };
